@@ -142,11 +142,7 @@ function closeFullscreen() {
 let fullscreen = false;
 
 function toggleFullscreen() {
-  if (!fullscreen) {
-    openFullscreen(player);
-  } else {
-    closeFullscreen();
-  }
+  !fullscreen ? openFullscreen(player) : closeFullscreen();
   fullscreen = !fullscreen;
 }
 
@@ -171,3 +167,49 @@ volumeIcon.addEventListener('click', toggleMute);
 speed.addEventListener('change', changeSpeed);
 fullscreenBtn.addEventListener('click', toggleFullscreen);
 video.addEventListener('dblclick', toggleFullscreen);
+addEventListener('keydown', (e) => {
+  if (e.key === 'f') {
+    toggleFullscreen();
+  }
+  if (e.key === 'm') {
+    toggleMute();
+  }
+  if (e.key === ' ') {
+    togglePlay();
+    e.preventDefault();
+  }
+  if (e.key === 'ArrowRight') {
+    video.currentTime += 10;
+  }
+  if (e.key === 'ArrowLeft') {
+    video.currentTime -= 10;
+  }
+  if (e.key === 'ArrowUp') {
+    e.preventDefault(); 
+    video.volume += 0.1;
+  }
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    video.volume -= 0.1;
+  }
+  if (e.key === '0') {
+    video.currentTime = 0;
+  }
+  if (e.key === '1') {
+    video.currentTime = video.duration / 4;
+  }
+  if (e.key === '2') {
+    video.currentTime = video.duration / 2;
+  }
+  if (e.key === '3') {
+    video.currentTime = video.duration * 3 / 4;
+  }
+  if (e.key === '4') {
+    video.currentTime = video.duration;
+  }
+  if (e.key === 'Escape') {
+    e.preventDefault();
+    closeFullscreen();
+  }
+});
+
