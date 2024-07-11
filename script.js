@@ -167,7 +167,7 @@ volumeIcon.addEventListener('click', toggleMute);
 speed.addEventListener('change', changeSpeed);
 fullscreenBtn.addEventListener('click', toggleFullscreen);
 video.addEventListener('dblclick', toggleFullscreen);
-addEventListener('keydown', (e) => {
+video.addEventListener('keydown', (e) => {
   if (e.key === 'f') {
     toggleFullscreen();
   }
